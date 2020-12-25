@@ -30,7 +30,7 @@ gui.add(config, 'mirror').onChange(() => {
   if (config.mirror && drum.classList.contains('v-flip'))
     drum.classList.remove('v-flip')
 })
-gui.add(config, 'easing', Object.keys(easings))
+gui.add(config, 'easingFn', Object.keys(easings))
 gui.add(config, 'displayVolume', 0, 1, 0.01)
 gui.add(config, 'volume', 0, 1, 0.01).onChange(() => {
   if (audio) audio.volume = config.volume
@@ -45,7 +45,7 @@ function updateFrame(reqNext) {
     analyser.getByteFrequencyData(freqBuffer)
     for (let i = 0; i < config.detail; i++) {
       const sampleFloat = freqBuffer[i * config.sampleMod] / 255
-      const modifiedFloat = easings[config.easing](
+      const modifiedFloat = easings[config.easingFn](
         sampleFloat * config.displayVolume
       )
       data.push(modifiedFloat)
