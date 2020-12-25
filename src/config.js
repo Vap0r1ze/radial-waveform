@@ -7,7 +7,7 @@ export default {
   mirror: true,
   bloomStrength: 0.5,
   bloomRadius: 20,
-  easing: 'easeInQuart',
+  easingFn: 'easeInQuart',
   displayVolume: 1,
   volume: 0.5
 }
